@@ -1,0 +1,8 @@
+openapi: 3.0.2
+info:
+  title: MinuArst-API
+  version: 1.0.0
+  description: >-
+  ### This is a Swagger UI for our MinuArst API
+
+  ### Error handling
