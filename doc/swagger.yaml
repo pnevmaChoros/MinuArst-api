@@ -27,3 +27,50 @@ paths:
                     description: Returns a list of all patients
             summary: Get a list of all patients
             description: returns a list of all patients
+    '/patient/{id}':
+        summary: Get full detail of a patient
+        description: Returns full list of details of a patient
+        get:
+            tags:
+                - Details
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                Full list of details of a patient:
+                                    value:
+                                        patient_id: 1
+                                        patient_firstname: Kati
+                                        patient_lastname: Kask
+                                        patient_email: kati.kask@gmail.com
+                                        patient_pass: '1234'
+                    description: returns list of details of a given patient id
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                Patient /w+ was not found:
+                                    value:
+                                        error: Patient \w+ was not found in patient array.
+                    description: Patient was not found in a patient array
+            deprecated: false
+            operationId: id
+            description: Returns a list full of details of a patient
+components:
+    schemas:
+        error:
+            title: Root Type for error
+            description: ''
+            type: object
+            properties:
+                error:
+                    type: string
+            example:
+                error: Error message.
