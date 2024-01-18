@@ -20,7 +20,6 @@ const sequelize = new Sequelize(
     }
 );
 
-
 const database = {};
 database.Sequelize = Sequelize;
 database.sequelize = sequelize;
