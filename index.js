@@ -30,7 +30,7 @@ app.post('/arstid', (req, res) => {
         return res.status(400).send({error:"One or all params are missing" })
     }
     let arstid = {id: arstid.length + 1,
-        name: req.body.amet,
+        amet: req.body.amet,
         name: req.body.name
     }
 
@@ -38,10 +38,20 @@ app.post('/arstid', (req, res) => {
 
     res.status(201)
     .location('${getBaseUrl(reg)}/arstid/${arstid.lenght}')
-    .send(arstid)
+    .send(arst)
 })
 
-//app.use('/arstid', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.delete('/arstid/:id', (req, res) => {
+    if (typeof games[reg.params.id - 1] === 'undefined') {
+        return res.status(404).send({error: "Arst not found"})
+    }
+    arstid.splice(reg.params.id - 1, 1)
+
+    res.status(200).send({error: "No content"})
+})
+    
+
+app.use('/arstid', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.listen(port, () => {
     console.log(`API up at: http://localhost:${port}/arstid`)

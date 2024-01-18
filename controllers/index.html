@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <table id="gamesTable" class="table table-striped table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Amet</th>
+        </tr>
+        <tr>
+            <td>Janek Veedla</td>
+            <td>Radioloog</td>
+        </tr>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>"
+    <script src="https://unpkg.com/browse/vue@3.2.26/dist/vue.global.js"></script>
+    <script>
+        const vue = Vue.createApp({
+            data() {
+                return {
+                    arstid: [
+                        {id: 1, name: "Tiina Tuvi", amet: "Lastearst"},
+                        {id: 2, name: "Maria Seevald", amet: "Lastearst"},
+                        {id: 3, name: "Aavo Holmsen", amet: "Perearst"},
+                    ]
+                }
+            }
+        }).mount('#counter')
+    </script>
+</body>
+</html>
