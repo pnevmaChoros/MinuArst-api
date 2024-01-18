@@ -4,5 +4,8 @@ module.exports = (app) => {
 
     //patient/
     app.route('/patient')
-    .get(patientController.getAll)
+    .get(patientController.getAll);
+
+    app.route('/patient/:id')
+    .get(patientController.getById);
 }
