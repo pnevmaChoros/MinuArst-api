@@ -1,0 +1,46 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "minuarts-api",
+        "version": "1.0.0",
+        "description": "### this is swagger ui for our minuarst api"
+    },
+    "paths": {
+        "/patient": {
+            "get": {
+                "requestBody": {},
+                "tags": [
+                    "MinuArst"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "examples": {
+                                    "List of patients": {
+                                        "value": [
+                                            {
+                                                "patient_id": 1,
+                                                "patient_firstname": "Kati",
+                                                "patient_lastname": "Kask"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns a list of all patients"
+                    }
+                },
+                "summary": "Get a list of all patients",
+                "description": "returns a list of all patients"
+            }
+        }
+    }
+}
