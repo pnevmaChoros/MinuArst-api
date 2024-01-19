@@ -1,0 +1,6 @@
+.idea
+.log
+/bin
+/out
+server/node_modules
+server/.env
