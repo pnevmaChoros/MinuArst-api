@@ -28,8 +28,24 @@ paths:
             summary: Get a list of all patients
             description: returns a list of all patients
         post:
+            requestBody:
+                description: A new patient to be created
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/error'
+                required: true
             tags:
                 - new-patient
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/new-patient'
+                    description: body created
+                '400':
+                    description: One or all params are missing
             summary: Create a patient
             description: Creates a new patient
     '/patient/{id}':
