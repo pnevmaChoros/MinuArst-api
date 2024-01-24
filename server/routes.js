@@ -10,5 +10,6 @@ module.exports = (app) => {
     //patinet/:id
     app.route('/patient/:id')
     .get(patientController.getById)
+    .put(patientController.updateById)
     .delete(patientController.deleteById);
 }

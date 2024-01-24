@@ -60,3 +60,33 @@ exports.deleteById = async (req, res) => {
     }
     res.status(204).send();
 }
+
+// patient/:id/
+exports.updateById = async (req, res) => {
+    let result;
+    delete req.body.id;
+    
+    try {
+        result = await Patient.update(
+            req.body,
+            {where: {patient_id: req.params.id}}
+        );
+    } 
+    catch (error) {
+        console.log('patient/:id - updateById: ', error);
+        res.status(500)
+        .send({error: 'Something went wrong on our side. Sorry xP'})
+        return;
+    }
+
+    if (result === 0) {
+        res.status(404)
+        .send({error: 'User not found'});
+        return;
+    }
+
+    const patient = await Patient.findByPk(req.params.id)
+    res.status(200)
+    .location(`${getBaseUrl(req)}/patient/${patient.id}`)
+    .json(patient);
+}

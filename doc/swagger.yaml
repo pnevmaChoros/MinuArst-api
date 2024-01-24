@@ -33,7 +33,7 @@ paths:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/error'
+                            $ref: '#/components/schemas/new-patient'
                 required: true
             tags:
                 - new-patient
@@ -85,6 +85,33 @@ paths:
             operationId: id
             summary: Get full details of patient
             description: Returns a list full of details of a patient
+        put:
+            requestBody:
+                description: update patient details
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/update-patient'
+                required: true
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/update-patient'
+                    description: patient updated
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                    description: User not found
+                '500':
+                    description: Something went wrong on our side
+            deprecated: false
+            operationId: id
+            summary: updated patient details
+            description: Updateds patients details by id
         delete:
             requestBody:
                 content:
@@ -157,3 +184,19 @@ components:
                     type: integer
             example:
                 id: 1
+        update-patient:
+            title: Root Type for update-patient
+            description: ''
+            type: object
+            properties:
+                patient_firstname:
+                    type: string
+                patient_lastname:
+                    type: string
+                patient_email:
+                    type: string
+                patient_pass:
+                    type: string
+            example:
+                patient_firstname: Edvard
+                patient_lastname: Richgofen
