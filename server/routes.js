@@ -17,4 +17,8 @@ module.exports = (app) => {
     //doctor
     app.route('/doctor')
     .get(doctorController.getAll);
+    
+    //doctor/:id
+    app.route('/doctor/:id')
+    .get(doctorController.getById);
 }

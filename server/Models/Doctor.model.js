@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
         },
 
-        patient_email: {
+        doctor_email: {
             type: Sequelize.STRING,
             allowNull: false
         },

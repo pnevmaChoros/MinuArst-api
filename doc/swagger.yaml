@@ -154,6 +154,42 @@ paths:
                     description: returns a list of all doctors
             summary: Gets a list of all patients
             description: returns a list of all doctors
+    '/doctor/{id}':
+        get:
+            tags:
+                - Details
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                doctor details:
+                                    value:
+                                        doctor_id: 1
+                                        doctor_firstname: Liis
+                                        doctor_lastname: Hangmaa
+                                        field_id: 1
+                                        doctor_email: liis.hangmaa@abc.ee
+                    description: returns list of details of a given doctor id
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                    description: Doctor was not found in a doctor array
+            deprecated: false
+            operationId: id
+            summary: Get full details of doctor
+            description: Returns a list full of details of a doctor
+        parameters:
+            -
+                name: id
+                in: path
+                required: true
 components:
     schemas:
         error:
