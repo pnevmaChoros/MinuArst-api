@@ -113,11 +113,6 @@ paths:
             summary: updated patient details
             description: Updateds patients details by id
         delete:
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/delete-patient'
             tags:
                 - Delete
             responses:
@@ -138,6 +133,27 @@ paths:
                 name: id
                 in: path
                 required: true
+    /doctor:
+        get:
+            tags:
+                - MinuArst
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                all doctors:
+                                    value:
+                                        doctor_id: 1
+                                        doctor_firstname: Liis
+                                        doctor_lastname: Hangmaa
+                    description: returns a list of all doctors
+            summary: Gets a list of all patients
+            description: returns a list of all doctors
 components:
     schemas:
         error:

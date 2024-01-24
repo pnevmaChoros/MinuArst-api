@@ -1,4 +1,5 @@
 const patientController = require('./controllers/PatientController');
+const doctorController = require('./controllers/DoctorController');
 
 module.exports = (app) => {
 
@@ -12,4 +13,8 @@ module.exports = (app) => {
     .get(patientController.getById)
     .put(patientController.updateById)
     .delete(patientController.deleteById);
+
+    //doctor
+    app.route('/doctor')
+    .get(doctorController.getAll);
 }
