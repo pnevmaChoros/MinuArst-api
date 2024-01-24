@@ -85,6 +85,27 @@ paths:
             operationId: id
             summary: Get full details of patient
             description: Returns a list full of details of a patient
+        delete:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/delete-patient'
+            tags:
+                - Delete
+            responses:
+                '204':
+                    description: patient deleted
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                    description: patient with this id dose not exist
+            deprecated: false
+            operationId: id
+            summary: Delete patient by id
+            description: Deletes patient by id
         parameters:
             -
                 name: id
@@ -124,3 +145,15 @@ components:
                 patient_lastname: Richgofen
                 patient_email: edvard.richg@gmail.com
                 patient_pass: '1234'
+        delete-patient:
+            title: Root Type for delete-patient
+            description: ''
+            required:
+                - id
+            type: object
+            properties:
+                id:
+                    format: int32
+                    type: integer
+            example:
+                id: 1

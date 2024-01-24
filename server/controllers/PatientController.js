@@ -44,3 +44,19 @@ exports.createNew = async (req, res) => {
     .location(`${getBaseUrl(req)}/patient`)
     .json(patient);
 }
+
+// patient/:id
+exports.deleteById = async (req, res) => {
+    let result;
+    console.log(req.params.id);
+    try{
+        result = await Patient.destroy({ where: { patient_id: req.params.id } });
+    } 
+    catch (error) {
+        console.log('patient/:id - deleteById: ', error);
+        res.status(500)
+        .send({error: 'something went wrong on our side. Sorry xP'});
+        return;
+    }
+    res.status(204).send();
+}
