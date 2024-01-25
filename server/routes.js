@@ -29,4 +29,10 @@ module.exports = (app) => {
     //calendar
     app.route('/calendar')
     .get(calendarController.getAll);
+
+    //calendar/:id
+    app.route('/calendar/:id')
+    .get(calendarController.getById);
+
+    
 }
