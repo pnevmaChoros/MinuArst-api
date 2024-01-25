@@ -17,13 +17,6 @@ paths:
                                 type: array
                                 items:
                                     type: string
-                            examples:
-                                List of patients:
-                                    value:
-                                        -
-                                            patient_id: 1
-                                            patient_firstname: Kati
-                                            patient_lastname: Kask
                     description: Returns a list of all patients
             summary: Get a list of all patients
             description: returns a list of all patients
@@ -257,6 +250,29 @@ paths:
                 name: id
                 in: path
                 required: true
+    /calendar:
+        description: ''
+        get:
+            tags:
+                - MinuArst
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                list of calendars:
+                                    value:
+                                        -
+                                            calendar_id: 1
+                                            calendar_comment: "random:\r\n[Patient Name] is a [age]-year-old individual who presented with [chief complaint]. After a thorough assessment, we have identified [relevant medical conditions or concerns], and the following diagnostic tests were conducted: [list of tests, if applicable].\r\n\r\nBased on the examination and test results, the primary concerns include [list of primary health issues]. In order to address these issues, the recommended treatment plan involves [prescribed medications, lifestyle changes, or further consultations]."
+                                            calendar_datetime: '2023-12-15T15:15:15.000Z'
+                    description: returned a list of all calendars
+            summary: Gets a list of all calendars
+            description: Returns a list of all calendars
 components:
     schemas:
         error:

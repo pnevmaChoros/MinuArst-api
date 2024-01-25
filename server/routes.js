@@ -1,5 +1,6 @@
 const patientController = require('./controllers/PatientController');
 const doctorController = require('./controllers/DoctorController');
+const calendarController = require('./controllers/CalendarController');
 
 module.exports = (app) => {
 
@@ -24,4 +25,8 @@ module.exports = (app) => {
     .get(doctorController.getById)
     .put(doctorController.updateById)
     .delete(doctorController.deleteById);
+
+    //calendar
+    app.route('/calendar')
+    .get(calendarController.getAll);
 }

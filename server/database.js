@@ -29,6 +29,7 @@ database.sequelize = sequelize;
 //Actually a "MODEL" an abstraction that represents a table in database TL;DR
 database.patients = require('./Models/Patient.model')(sequelize, Sequelize);
 database.doctors = require('./Models/Doctor.model')(sequelize, Sequelize);
+database.calendars = require('./Models/Calendar.model')(sequelize, Sequelize);
 
 // Checks database connection status
 sequelize.authenticate().then( () => {
