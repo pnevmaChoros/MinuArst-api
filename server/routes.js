@@ -21,5 +21,6 @@ module.exports = (app) => {
     
     //doctor/:id
     app.route('/doctor/:id')
-    .get(doctorController.getById);
+    .get(doctorController.getById)
+    .delete(doctorController.deleteById);
 }

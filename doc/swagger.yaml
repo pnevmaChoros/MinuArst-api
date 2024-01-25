@@ -53,7 +53,7 @@ paths:
         description: Returns full list of details of a patient
         get:
             tags:
-                - Details
+                - GetDetails
             responses:
                 '200':
                     content:
@@ -178,7 +178,7 @@ paths:
     '/doctor/{id}':
         get:
             tags:
-                - Details
+                - GetDetails
             responses:
                 '200':
                     content:
@@ -206,6 +206,22 @@ paths:
             operationId: id
             summary: Get full details of doctor
             description: Returns a list full of details of a doctor
+        delete:
+            tags:
+                - Delete
+            responses:
+                '204':
+                    description: doctor deleted
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                    description: doctor with this id dose not exist
+            deprecated: false
+            operationId: id
+            summary: Delete doctor by id
+            description: Deletes doctor by id
         parameters:
             -
                 name: id
