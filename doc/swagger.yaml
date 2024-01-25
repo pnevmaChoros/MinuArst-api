@@ -6,7 +6,6 @@ info:
 paths:
     /patient:
         get:
-            requestBody: {}
             tags:
                 - MinuArst
             responses:
@@ -75,7 +74,7 @@ paths:
                                         error: Patient \w+ was not found in patient array.
                     description: Patient was not found in a patient array
             deprecated: false
-            operationId: id
+            operationId: patient_id_get
             summary: Get full details of patient
             description: Returns a list full of details of a patient
         put:
@@ -104,7 +103,7 @@ paths:
                 '500':
                     description: Something went wrong on our side
             deprecated: false
-            operationId: id
+            operationId: patient_id_put
             summary: updated patient details
             description: Updateds patients details by id
         delete:
@@ -120,7 +119,7 @@ paths:
                                 $ref: '#/components/schemas/error'
                     description: patient with this id dose not exist
             deprecated: false
-            operationId: id
+            operationId: patient_id_del
             summary: Delete patient by id
             description: Deletes patient by id
         parameters:
@@ -202,7 +201,7 @@ paths:
                                         error: Doctor \w+ was not found in doctor array.
                     description: Doctor was not found in a doctor array
             deprecated: false
-            operationId: id
+            operationId: doctor_id_get
             summary: Get full details of doctor
             description: Returns a list full of details of a doctor
         put:
@@ -230,7 +229,7 @@ paths:
                 '500':
                     description: Something went wrong on our side
             deprecated: false
-            operationId: id
+            operationId: doctor_id_put
             summary: updated doctor details
             description: Updates doctor details by id
         delete:
@@ -246,7 +245,7 @@ paths:
                                 $ref: '#/components/schemas/error'
                     description: doctor with this id dose not exist
             deprecated: false
-            operationId: id
+            operationId: doctor_id_del
             summary: Delete doctor by id
             description: Deletes doctor by id
         parameters:
@@ -268,7 +267,7 @@ paths:
                                 items:
                                     type: string
                             examples:
-                                list of calendars:
+                                List of calendars:
                                     value:
                                         -
                                             calendar_id: 1
@@ -277,6 +276,26 @@ paths:
                     description: returns a list of all calendars
             summary: Gets a list of all calendars
             description: Returns a list of all calendars
+        post:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/new-calendar'
+                required: true
+            tags:
+                - NewBody
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/new-calendar'
+                    description: body created
+                '400':
+                    description: One or all params are missing
+            summary: Create a calendar
+            description: Creates a new calendar
     '/calendar/{id}':
         get:
             tags:
@@ -309,7 +328,7 @@ paths:
                                         error: Calendar \w+ was not found in calendar array.
                     description: Calendar was not found in a calendar array
             deprecated: false
-            operationId: id
+            operationId: calendar_id_get
             summary: Returns a list full of details of a calendar
             description: returns list of details of a given calendar id
         parameters:
@@ -421,3 +440,27 @@ components:
                 doctor_lastname: Metsonn
                 doctor_email: oliver.mets@gmail.com
                 doctor_pass: '432231'
+        new-calendar:
+            title: Root Type for new-calendar
+            description: ''
+            type: object
+            properties:
+                doctor_id:
+                    format: int32
+                    type: integer
+                patient_id:
+                    format: int32
+                    type: integer
+                calendar_comment:
+                    type: string
+                calendar_datetime:
+                    format: date-time
+                    type: string
+            example:
+                doctor_id: 1
+                patient_id: 2
+                calendar_comment: >-
+                    Patient bla bla bla, thy personal informations bla bla bla, an assigned Doctor [thy data]
+                    and theortical investigation which leads to possible distractions and futher
+                    recomendations and process description of possible cure
+                calendar_datetime: '2024-01-30T16:20:00.000Z'
