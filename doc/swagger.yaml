@@ -93,6 +93,8 @@ paths:
                         schema:
                             $ref: '#/components/schemas/update-patient'
                 required: true
+            tags:
+                - UpdateDetails
             responses:
                 '200':
                     content:
@@ -206,6 +208,34 @@ paths:
             operationId: id
             summary: Get full details of doctor
             description: Returns a list full of details of a doctor
+        put:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/update-doctor'
+                required: true
+            tags:
+                - UpdateDetails
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/update-doctor'
+                    description: doctor updated
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                    description: Doctor not found
+                '500':
+                    description: Something went wrong on our side
+            deprecated: false
+            operationId: id
+            summary: updated doctor details
+            description: Updates doctor details by id
         delete:
             tags:
                 - Delete
@@ -313,3 +343,21 @@ components:
                 doctor_lastname: Hangmaa123
                 field_id: 1
                 doctor_email: liis.hangmaa@abc.ee23
+        update-doctor:
+            title: Root Type for update-doctor
+            description: ''
+            type: object
+            properties:
+                doctor_email:
+                    type: string
+                doctor_firstname:
+                    type: string
+                doctor_lastname:
+                    type: string
+                doctor_pass:
+                    type: string
+            example:
+                doctor_firstname: Oliver
+                doctor_lastname: Metsonn
+                doctor_email: oliver.mets@gmail.com
+                doctor_pass: '432231'
