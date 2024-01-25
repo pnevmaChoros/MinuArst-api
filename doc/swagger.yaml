@@ -331,6 +331,34 @@ paths:
             operationId: calendar_id_get
             summary: Returns a list full of details of a calendar
             description: returns list of details of a given calendar id
+        put:
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/update-calendar'
+                required: true
+            tags:
+                - UpdateDetails
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/update-calendar'
+                    description: calendar updated
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                    description: Calendar not found
+                '500':
+                    description: Something went wrong on our side
+            deprecated: false
+            operationId: calendar_id_put
+            summary: updated calendar details
+            description: Updates calendar details by id
         delete:
             tags:
                 - Delete
@@ -479,3 +507,24 @@ components:
                     and theortical investigation which leads to possible distractions and futher
                     recomendations and process description of possible cure
                 calendar_datetime: '2024-01-30T16:20:00.000Z'
+        update-calendar:
+            title: Root Type for update-calendar
+            description: ''
+            type: object
+            properties:
+                doctor_id:
+                    format: int32
+                    type: integer
+                patient_id:
+                    format: int32
+                    type: integer
+                calendar_comment:
+                    type: string
+                calendar_datetime:
+                    format: date-time
+                    type: string
+            example:
+                doctor_id: 1
+                patient_id: 1
+                calendar_comment: this comment was changed
+                calendar_datetime: '2022-02-22T22:02:22.000Z'

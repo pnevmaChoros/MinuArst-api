@@ -34,6 +34,7 @@ module.exports = (app) => {
     //calendar/:id
     app.route('/calendar/:id')
     .get(calendarController.getById)
+    .put(calendarController.updateById)
     .delete(calendarController.deleteById);
 
     
