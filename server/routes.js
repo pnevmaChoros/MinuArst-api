@@ -16,7 +16,8 @@ module.exports = (app) => {
 
     //doctor
     app.route('/doctor')
-    .get(doctorController.getAll);
+    .get(doctorController.getAll)
+    .post(doctorController.createNew);
     
     //doctor/:id
     app.route('/doctor/:id')

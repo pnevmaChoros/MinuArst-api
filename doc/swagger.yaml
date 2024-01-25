@@ -36,7 +36,7 @@ paths:
                             $ref: '#/components/schemas/new-patient'
                 required: true
             tags:
-                - new-patient
+                - NewBody
             responses:
                 '201':
                     content:
@@ -154,6 +154,27 @@ paths:
                     description: returns a list of all doctors
             summary: Gets a list of all patients
             description: returns a list of all doctors
+        post:
+            requestBody:
+                description: A new doctor to be created
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/new-doctor'
+                required: true
+            tags:
+                - NewBody
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/new-doctor'
+                    description: body created
+                '400':
+                    description: One or all params are missing
+            summary: Create a doctor
+            description: Creates a new doctor
     '/doctor/{id}':
         get:
             tags:
@@ -252,3 +273,27 @@ components:
             example:
                 patient_firstname: Edvard
                 patient_lastname: Richgofen
+        new-doctor:
+            title: Root Type for new-doctor
+            description: ''
+            required:
+                - doctor_firstname
+                - doctor_lastname
+                - doctor_email
+                - field_id
+            type: object
+            properties:
+                doctor_firstname:
+                    type: string
+                doctor_lastname:
+                    type: string
+                field_id:
+                    format: int32
+                    type: integer
+                doctor_email:
+                    type: string
+            example:
+                doctor_firstname: Liis123
+                doctor_lastname: Hangmaa123
+                field_id: 1
+                doctor_email: liis.hangmaa@abc.ee23
