@@ -331,6 +331,21 @@ paths:
             operationId: calendar_id_get
             summary: Returns a list full of details of a calendar
             description: returns list of details of a given calendar id
+        delete:
+            tags:
+                - Delete
+            responses:
+                '204':
+                    description: calendar deleted
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                    description: calendar with this id dose not exist
+            operationId: calendar_id_del
+            summary: Delete calendar by id
+            description: Deletes calendar by id
         parameters:
             -
                 name: id

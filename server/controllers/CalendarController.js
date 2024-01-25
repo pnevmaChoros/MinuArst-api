@@ -44,3 +44,19 @@ exports.createNew = async (req, res) => {
     .location(`${getBaseUrl(req)}/calendar`)
     .json(calendar);
 }
+
+//calendar/:id
+exports.deleteById = async (req, res) => {
+    let result;
+    console.log(req.params.id);
+    try{
+        result = await Calendar.destroy({ where: { calendar_id: req.params.id } });
+    } 
+    catch (error) {
+        console.log('calendar/:id - deleteById: ', error);
+        res.status(500)
+        .send({error: 'something went wrong on our side. Sorry xP'});
+        return;
+    }
+    res.status(204).send();
+}

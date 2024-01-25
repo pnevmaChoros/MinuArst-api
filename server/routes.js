@@ -33,7 +33,8 @@ module.exports = (app) => {
 
     //calendar/:id
     app.route('/calendar/:id')
-    .get(calendarController.getById);
+    .get(calendarController.getById)
+    .delete(calendarController.deleteById);
 
     
 }
