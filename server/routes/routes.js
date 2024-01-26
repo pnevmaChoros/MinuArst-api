@@ -1,6 +1,6 @@
-const patientController = require('./controllers/PatientController');
-const doctorController = require('./controllers/DoctorController');
-const calendarController = require('./controllers/CalendarController');
+const patientController = require('../controllers/PatientController');
+const doctorController = require('../controllers/DoctorController');
+const calendarController = require('../controllers/CalendarController');
 
 module.exports = (app) => {
 
